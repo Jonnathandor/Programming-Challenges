@@ -7,6 +7,9 @@
 // 4 5 6
 // 9 8 9  
 
+//[0][0], [1][1], [2][2] left to right diagonal
+// [0][2], [1][1], [2][0] right to left diagonal
+
 function diagonalDifference(arr) {
     let diagonalLeftToRight = 0;
     let diagonalRightToLeft = 0;
