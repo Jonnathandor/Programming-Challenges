@@ -6,19 +6,13 @@
 //The function prints: 16 24
 
 function minMaxSum(array){
-    let sortedArray = array.sort();
-    let minSum = 0; 
-    let maxSum = 0;
+    let sortedArray = arr.sort();
+    let sum = 0; 
+    let max = sortedArray[sortedArray.length -1];
+    let min = sortedArray[0];
 
     for(let number of sortedArray){
-        if(sortedArray.indexOf(number) !== 0){
-            maxSum += number;
-        }
-
-        if(sortedArray.indexOf(number) !== sortedArray.length -1){
-            minSum += number;
-        }
+        sum += number;
     }
-
-    console.log(minSum, maxSum);
+    console.log(sum - max, sum - min);
 }
