@@ -17,8 +17,6 @@
 
 // - 1, 4, 9, 16, 25
 
-// Check out the test suite to see the expected function signature.
-
 const accumulate = function (collection: any[], fn: (a: any) => any): any[] {
     return collection.map(item => fn(item));
 };
