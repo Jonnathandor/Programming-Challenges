@@ -17,7 +17,12 @@
 
 // - 1, 4, 9, 16, 25
 
-const accumulate = function (collection: any[], fn: (a: any) => any): any[] {
+// 'ANY' IS NOT THE BEST OPTION, READ: https://www.typescriptlang.org/docs/handbook/2/generics.html 
+// const accumulate = function (collection: any[], fn: (a: any) => any): any[] {
+//     return collection.map(item => fn(item));
+// };
+
+const accumulate = function<T, V>(collection: T[], fn: (a: T) => V): V[] {
     return collection.map(item => fn(item));
 };
 
