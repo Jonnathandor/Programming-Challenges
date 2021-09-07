@@ -32,24 +32,29 @@
 // brown-green should return 15
 // brown-green-violet should return 15 too, ignoring the third color.
 
+type Colors = {
+  [key: string]: number
+}
+
+const COLORS: Colors = {
+  black: 0,
+  brown: 1,
+  red: 2,
+  orange: 3,
+  yellow: 4,
+  green: 5,
+  blue: 6,
+  violet: 7,
+  grey: 8,
+  white: 9
+} as const;
+
 export class ResistorColor {
-    private colors: string[]
-  
-    constructor(colors: string[]) {
-      if(colors.length < 2) { throw new Error('At least two colors need to be present'); }
-      this.colors = colors
-    }
-    value = ():number => {
-      let resistanceValue = 0;
-      resistanceValue += colorCode(this.colors[0]) * 10; 
-      resistanceValue += colorCode(this.colors[1]);
-    
-      return resistanceValue;
-    
-    }
+  constructor(private colors: string[]) {
+    if(colors.length < 2) { throw new Error('At least two colors need to be present'); }
+    this.colors = colors
   }
-  
-  const colorCode = (color: string):number => {
-    const COLORS = ['black', 'brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'grey', 'white'];
-    return COLORS.indexOf(color);
-};
+  value(): number {
+    return (COLORS[this.colors[0]] * 10) + COLORS[this.colors[1]];
+  }
+}
