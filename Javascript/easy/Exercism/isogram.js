@@ -13,6 +13,9 @@
 
 // The word _isograms_, however, is not an isogram, because the s repeats.
 
+// NOT MY SOLUTION... after understanding the need I literally typed in google:
+// regex for isograms and found this: https://stackoverflow.com/questions/42614597/trying-to-write-a-program-that-checks-if-a-string-is-an-isogram-with-javascript 
+
 export const isIsogram = (str) => {
     return !/(\w).*\1/i.test(str)
 };
