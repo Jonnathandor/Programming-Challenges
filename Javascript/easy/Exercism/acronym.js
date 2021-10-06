@@ -9,9 +9,9 @@
 
 export const parse = (s) => {
     let acronym = '';
-    const words = s.replace(/[^a-zA-Z']+/g, ' ').split(' ');
-    for(const word of words){
-      acronym += word[0].toUpperCase();
+    const WORDS = s.replace(/[^a-zA-Z']+/g, ' ').split(' ');
+    for(const WORD of WORDS){
+      acronym += WORD[0].toUpperCase();
     }
     return acronym;
 };
