@@ -53,14 +53,16 @@ public class LogLevels {
     }
 
     public static String logLevel(String logLine) {
-        String log = "info";
-        if(logLine.contains("ERROR")){
-            log = "error";
-        } else if(logLine.contains("WARNING")){
-            log = "warning";
-        }
+        // String log = "info";
+        // if(logLine.contains("ERROR")){
+        //     log = "error";
+        // } else if(logLine.contains("WARNING")){
+        //     log = "warning";
+        // }
 
-        return log;
+        // return log;
+
+        return logLine.substring(1, logLine.indexOf("]")).toLowerCase();
     }
 
     public static String reformat(String logLine) {
