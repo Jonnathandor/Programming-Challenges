@@ -66,20 +66,20 @@ public class LogLevels {
     }
 
     public static String reformat(String logLine) {
-        String[] words = logLine.split(" ");
-        String code = " (info)";
+        // String[] words = logLine.split(" ");
+        // String code = " (info)";
 
-        if(logLine.contains("ERROR")){
-            code = " (error)";
-        } else if(logLine.contains("WARNING")){
-            code = " (warning)";
-        }
+        // if(logLine.contains("ERROR")){
+        //     code = " (error)";
+        // } else if(logLine.contains("WARNING")){
+        //     code = " (warning)";
+        // }
 
-        String log = "";
-        for(int i = 1; i < words.length; i++){
-            log += words[i] + " ";
-        }
+        // String log = "";
+        // for(int i = 1; i < words.length; i++){
+        //     log += words[i] + " ";
+        // }
 
-        return log.trim() + code;
+        return message(logLine) + " " + "(" +logLevel(logLine) + ")";
     }
 }
