@@ -7,7 +7,14 @@ public class LogLevels {
     }
 
     public static String logLevel(String logLine) {
-        throw new UnsupportedOperationException("Please implement the (static) LogLine.logLevel() method");
+        String log = "info";
+        if(logLine.contains("ERROR")){
+            log = "error";
+        } else if(logLine.contains("WARNING")){
+            log = "warning";
+        }
+
+        return log;
     }
 
     public static String reformat(String logLine) {
