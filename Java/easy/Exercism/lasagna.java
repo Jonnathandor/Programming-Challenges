@@ -1,3 +1,4 @@
+package easy.Exercism;
 // ## Instructions
 
 // In this exercise you're going to write some code to help you cook a brilliant
