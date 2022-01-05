@@ -48,7 +48,8 @@ package easy.Exercism;
 // ```
 public class LogLevels {
     public static String message(String logLine) {
-        String regex = "\\B\\[ERROR\\]:|\\[WARNING\\]:|\\[INFO\\]:\\B";
+        // String regex = "\\B\\[ERROR\\]:|\\[WARNING\\]:|\\[INFO\\]:\\B";
+        String regex = "\\[(.*?)\\]: ";
         return logLine.replaceAll(regex, "").trim();
     }
 
