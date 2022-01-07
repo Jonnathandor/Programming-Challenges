@@ -49,7 +49,9 @@ package easy.Exercism;
 public class LogLevels {
     public static String message(String logLine) {
         // String regex = "\\B\\[ERROR\\]:|\\[WARNING\\]:|\\[INFO\\]:\\B";
-        String regex = "\\[(.*?)\\]: ";
+        // String regex = "\\[(.*?)\\]: ";
+        // see the difference between lazy and greedy searches: https://www.youtube.com/watch?v=yOOwIbkCFqM
+        String regex = "\\[.*\\]: ";
         return logLine.replaceAll(regex, "").trim();
     }
 
