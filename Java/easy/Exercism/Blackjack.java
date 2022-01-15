@@ -125,5 +125,29 @@ public class Blackjack {
     public boolean isBlackjack(String card1, String card2) {
         return (parseCard(card1) + parseCard(card2)) == 21;
     }
+
+    public String largeHand(boolean isBlackjack, int dealerScore) {
+        if((dealerScore == 11 || dealerScore == 10) && isBlackjack){
+            return "S";
+        } else if(isBlackjack && dealerScore < 10){
+            return "W";
+        }
+
+        return "P";
+    }
+
+    public String smallHand(int handScore, int dealerScore) {
+        if(handScore >= 17) {
+            return "S";
+        } else if(handScore <= 11){
+            return "H";
+        }
+
+        if(dealerScore >= 7){
+            return "H";
+        }
+
+        return "S";
+    }
     
 }
