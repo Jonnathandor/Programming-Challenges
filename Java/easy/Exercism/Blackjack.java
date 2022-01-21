@@ -82,44 +82,30 @@ package easy.Exercism;
 
 public class Blackjack {
     public int parseCard(String card) {
-        int value = 0;
         switch(card) {
             case "one":
-                value = 1;
-                break;
+                return 1;
             case "two":
-                value = 2;
-                break;
+                return 2;
             case "three":
-                value = 3;
-                break;
+                return 3;
             case "four":
-                value = 4;
-                break;
+                return 4;
             case "five":
-                value = 5;
-                break;
+                return 5;
             case "six":
-                value = 6;
-                break;
+                return 6;
             case "seven":
-                value = 7;
-                break;
+                return 7;
             case "eight":
-                value = 8;
-                break;
+                return 8;
             case "nine":
-                value = 9;
-                break;
+                return 9;
             case "ace":
-                value = 11;
-                break;
+                return 11;
             default:
-                value = 10;
-                break;
+                return 10;
         }
-
-        return value;
     }
 
     public boolean isBlackjack(String card1, String card2) {
