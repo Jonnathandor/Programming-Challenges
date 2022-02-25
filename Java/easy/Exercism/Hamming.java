@@ -1,23 +1,19 @@
 package easy.Exercism;
 
 public class Hamming {
-    private String leftStrand;
-    private String rightStrand;
+    private int distance = 0;
+
     public Hamming(String leftStrand, String rightStrand) {
         validate(leftStrand, rightStrand);
-        this.leftStrand = leftStrand;
-        this.rightStrand = rightStrand;
-    }
-
-    public int getHammingDistance() {
-        int distance = 0;
-        for (int i = 0; i < this.rightStrand.length(); i++){
-            if(this.rightStrand.charAt(i) != this.leftStrand.charAt(i)){
+        for (int i = 0; i < rightStrand.length(); i++){
+            if(rightStrand.charAt(i) != leftStrand.charAt(i)){
                 distance++;
             }
         }
+    }
 
-        return distance;
+    public int getHammingDistance() {
+        return this.distance;
     }
 
     private static void validate(String leftStrand, String rightStrand) {
