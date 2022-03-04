@@ -21,9 +21,10 @@ public class BirdWatcher {
     }
 
     public boolean hasDayWithoutBirds() {
-        System.out.println(java.util.Arrays.asList(this.birdsPerDay).contains(0));
-        System.out.println(java.util.Arrays.toString(this.birdsPerDay));
-        return java.util.Arrays.asList(this.birdsPerDay).contains(0);
+        for(int birds : this.birdsPerDay) {
+            if (birds ==0) { return true; }
+        }
+        return false;
     }
 
     public int getCountForFirstDays(int numberOfDays) {
