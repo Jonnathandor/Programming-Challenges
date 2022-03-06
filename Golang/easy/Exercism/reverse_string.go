@@ -7,9 +7,22 @@ package reverse
 // output: "looc"
 
 func Reverse(input string) string {
-	reversed := ""
-	for _, v := range input {
-		reversed = string(v) + reversed
+
+	// reversed := ""
+	// for _, v := range input {
+	// 	reversed = string(v) + reversed
+	// }
+	// return reversed
+
+	if len(input) == 0 {
+		return ""
 	}
-	return reversed
+	runes := []rune(input)
+
+	reversed := make([]rune, 0, cap(runes))
+	for i := len(runes) - 1; i >= 0; i-- {
+		reversed = append(reversed, []rune(input)[i])
+	}
+
+	return string(reversed)
 }
