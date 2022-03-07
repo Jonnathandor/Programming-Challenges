@@ -7,13 +7,14 @@ package reverse
 // output: "looc"
 
 func Reverse(input string) string {
-
+	// 4123 ns/op
 	// reversed := ""
 	// for _, v := range input {
 	// 	reversed = string(v) + reversed
 	// }
 	// return reversed
 
+	//1167 ns/op
 	if len(input) == 0 {
 		return ""
 	}
