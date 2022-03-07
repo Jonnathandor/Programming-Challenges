@@ -22,7 +22,7 @@ func Reverse(input string) string {
 
 	reversed := make([]rune, 0, cap(runes))
 	for i := len(runes) - 1; i >= 0; i-- {
-		reversed = append(reversed, []rune(input)[i])
+		reversed = append(reversed, runes[i])
 	}
 
 	return string(reversed)
