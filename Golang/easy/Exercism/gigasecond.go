@@ -3,11 +3,12 @@ package gigasecond
 
 // import path for the time package from the standard library
 import (
-	"math"
 	"time"
 )
 
+const Gigasecond = 1000000000
+
 // AddGigaSecond adds a gigasecond to the passed time
 func AddGigasecond(t time.Time) time.Time {
-	return t.Add(time.Second * time.Duration(math.Pow10(9)))
+	return t.Add(time.Second * Gigasecond)
 }
