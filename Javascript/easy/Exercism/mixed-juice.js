@@ -26,7 +26,22 @@
    * @returns {number} number of limes cut
    */
   export function limesToCut(wedgesNeeded, limes) {
-    throw new Error('Please implement the limesToCut function');
+    // There is no point in executing the function 
+    // if we do not need wedges or if we do not have limes
+    if(wedgesNeeded === 0 || limes.length === 0){ return 0;}
+    let limesCount = 0;
+    const sizes = {
+        small: 6,
+        medium: 8,
+        large: 10 
+    };
+
+    while(wedgesNeeded >= 0 && limesCount < limes.length){
+        wedgesNeeded -= sizes[limes[limesCount]]
+        limesCount++;
+    }
+
+    return limesCount;
   }
   
   /**
