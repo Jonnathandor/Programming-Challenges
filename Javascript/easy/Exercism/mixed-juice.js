@@ -52,5 +52,13 @@
    * @returns {string[]} remaining orders after the time is up
    */
   export function remainingOrders(timeLeft, orders) {
-    throw new Error('Please implement the remainingOrders function');
+    let counter = 0;
+    while(timeLeft >= 0){
+      orders.shift();
+      timeLeft -= timeToMixJuice(orders[counter]);
+    }
+  
+    console.log(orders);
+  
+    return orders;
   }
