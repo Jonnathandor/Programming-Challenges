@@ -26,22 +26,13 @@
    * @returns {number} number of limes cut
    */
   export function limesToCut(wedgesNeeded, limes) {
-    // There is no point in executing the function 
-    // if we do not need wedges or if we do not have limes
-    if(wedgesNeeded === 0 || limes.length === 0){ return 0;}
-    let limesCount = 0;
-    const sizes = {
-        small: 6,
-        medium: 8,
-        large: 10 
-    };
-
-    while(wedgesNeeded >= 0 && limesCount < limes.length){
-        wedgesNeeded -= sizes[limes[limesCount]]
-        limesCount++;
+    let limesCut = 0;
+    while (wedgesNeeded > 0 && limes.length > 0) {
+      limesCut++;
+      wedgesNeeded -= wedgesFromLime(limes.shift());
     }
-
-    return limesCount;
+  
+    return limesCut;
   }
   
   /**
@@ -52,13 +43,20 @@
    * @returns {string[]} remaining orders after the time is up
    */
   export function remainingOrders(timeLeft, orders) {
-    let counter = 0;
-    while(timeLeft >= 0){
-      orders.shift();
-      timeLeft -= timeToMixJuice(orders[counter]);
+    do {
+        timeLeft -= timeToMixJuice(orders.shift());
+      } while (timeLeft > 0 && orders.length > 0);
+    
+      return orders;
+  }
+
+  function wedgesFromLime(size) {
+    switch (size) {
+      case 'small':
+        return 6;
+      case 'medium':
+        return 8;
+      case 'large':
+        return 10;
     }
-  
-    console.log(orders);
-  
-    return orders;
   }
