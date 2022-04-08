@@ -187,3 +187,18 @@ export function ticketStatus(tickets, ticketId) {
     }
     return `sold to ${tickets[ticketId]}`;
   }
+
+/**
+ * Determines the status a ticket has in the ticket tracking object
+ * and returns a simplified status message.
+ *
+ * @param {Record<string, string|null>} tickets
+ * @param {string} ticketId
+ * @returns {string} ticket status
+ */
+export function simpleTicketStatus(tickets, ticketId) {
+    if(tickets[ticketId] === undefined || tickets[ticketId] === null){
+      return 'invalid ticket !!!';
+    }
+    return tickets[ticketId];
+}
