@@ -171,3 +171,19 @@
     visitor.ticketId = null;
     return visitor;
   }
+
+/**
+ * Determines the status a ticket has in the ticket tracking object.
+ *
+ * @param {Record<string, string|null>} tickets
+ * @param {string} ticketId
+ * @returns {string} ticket status
+ */
+export function ticketStatus(tickets, ticketId) {
+    if(tickets[ticketId] === undefined){
+      return 'unknown ticket id';
+    } else if(tickets[ticketId] === null){
+      return 'not sold';
+    }
+    return `sold to ${tickets[ticketId]}`;
+  }
