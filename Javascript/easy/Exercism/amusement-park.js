@@ -202,3 +202,13 @@ export function simpleTicketStatus(tickets, ticketId) {
     }
     return tickets[ticketId];
 }
+
+/**
+ * Determines the version of the GTC that was signed by the visitor.
+ *
+ * @param {VisitorWithGtc} visitor
+ * @returns {string | undefined} version
+ */
+ export function gtcVersion(visitor) {
+    return visitor.gtc?.version;
+  }
