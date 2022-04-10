@@ -159,3 +159,12 @@ export function quantities(layers){
 export function addSecretIngredient(friendList, myList){
     myList.push(friendList[friendList.length-1])
 }
+
+export function scaleRecipe(recipe, portions){
+    const scaledRecipe = { ...recipe };
+    for (let ingredient in recipe) {
+        scaledRecipe[ingredient] *= (portions / 2);
+    }
+
+    return scaledRecipe;
+}
