@@ -142,3 +142,20 @@ export function cookingStatus(timer){
     if(timer === undefined) return 'You forgot to set the timer.';
     return timer > 0 ? 'Not done, please wait.' : 'Lasagna is done.';
 }
+
+export function preparationTime(layers, time = 2){
+    if(layers.length === 0) return 0;
+
+    return layers.length * time;
+}
+
+export function quantities(layers){
+    const noodles = [...layers].filter(ingredient => ingredient === 'noodles');
+    const sauce = layers.filter(ingredients => ingredients === 'sauce');
+
+    return { noodles: noodles.length * 50, sauce: sauce.length * 0.2 };
+}
+
+export function addSecretIngredient(friendList, myList){
+    myList.push(friendList[friendList.length-1])
+}
