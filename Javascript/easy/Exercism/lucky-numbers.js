@@ -105,3 +105,22 @@
   export function luckyNumber(value) {
     return String(value) === String(value).split('').reverse().join('');
   }
+
+  /**
+ * Determines the error message that should be shown to the user
+ * for the given input value.
+ *
+ * @param {string|null|undefined} input
+ * @returns {string} error message
+ */
+export function errorMessage(input) {
+    if(input === undefined || input === '' || input === null){
+      return 'Required field';
+    }
+  
+    if(!Number(input)){
+      return 'Must be a number besides 0';
+    }
+  
+    return '';
+  }
