@@ -114,7 +114,7 @@
  * @returns {string} error message
  */
 export function errorMessage(input) {
-    if(input === undefined || input === '' || input === null){
+    if(!input){
       return 'Required field';
     }
   
