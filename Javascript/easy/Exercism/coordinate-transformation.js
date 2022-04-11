@@ -37,7 +37,9 @@
    *  transformed coordinate pair in the form [x, y]
    */
   export function composeTransform(f, g) {
-    
+    return function(x, y){
+        return g(...f(x, y));
+      }
   }
   
   /**
@@ -50,5 +52,11 @@
    *  if the arguments are the same on subsequent calls, or compute a new result if they are different.
    */
   export function memoizeTransform(f) {
-    return function(){};
+    let pX, pY, lastResult;
+    return function(x, y){
+      if(x === pX && y === pY) return lastResult;
+      pX = x;
+      pY = y;
+      return lastResult = f(x,y);
+    }
   }
