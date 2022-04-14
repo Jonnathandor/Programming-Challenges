@@ -40,17 +40,18 @@ export function pickFruit(variety, quantity, callback) {
  * @param {boolean | undefined} isAvailable
  * @return {AvailabilityAction} whether the fruit was purchased 'PURCHASE' or 'NOOP'
  */
-export function purchaseInventoryIfAvailable(err, isAvailable) {
-  throw new Error('Implement the purchaseInventoryIfAvailable function');
-}
-
-/**
- * Pick a fruit, and if it is available, purchase it
- *
- * @param {string} variety
- * @param {number} quantity
- * @return {AvailabilityAction} whether the fruit was purchased 'PURCHASE' or 'NOOP'
- */
-export function pickAndPurchaseFruit(variety, quantity) {
-  throw new Error('Implement the pickAndPurchaseFruit function');
-}
+ export function purchaseInventoryIfAvailable(err, isAvailable) {
+    if(err !== null) throw new Error(err);
+    return isAvailable ? 'PURCHASE' : 'NOOP';
+  }
+  
+  /**
+   * Pick a fruit, and if it is available, purchase it
+   *
+   * @param {string} variety
+   * @param {number} quantity
+   * @return {AvailabilityAction} whether the fruit was purchased 'PURCHASE' or 'NOOP'
+   */
+  export function pickAndPurchaseFruit(variety, quantity) {
+    return pickFruit(variety, quantity, purchaseInventoryIfAvailable);
+  }
