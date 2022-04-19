@@ -36,14 +36,19 @@
 // - @rchavarria
 
 export const clean = (phoneNumber) => {
-
-    const regex = /[0-9]/g;
-    let cleanNumber = phoneNumber.match(regex);
+    if(phoneNumber.match(/[a-z]/gi)) throw Error('Letters not permitted');
+    if (phoneNumber.match(/[@:!]/)) throw Error('Punctuations not permitted');
+  
+    let cleanNumber = phoneNumber.match(/[0-9]/g);
   
     if(cleanNumber.length < 10) throw Error('Incorrect number of digits');
     if(cleanNumber.length === 11 && cleanNumber[0] !== '1') throw Error('11 digits must start with 1');
     if(cleanNumber.length > 11) throw Error('More than 11 digits');
     if(cleanNumber.length === 11) cleanNumber.shift();
+    if(cleanNumber[0] === '0') throw Error('Area code cannot start with zero');
+    if(cleanNumber[0] === '1') throw Error('Area code cannot start with one');
+    if(cleanNumber[3] === '0') throw Error('Exchange code cannot start with zero');
+    if(cleanNumber[3] === '1') throw Error('Exchange code cannot start with one');
   
     return cleanNumber.join('');
 };
