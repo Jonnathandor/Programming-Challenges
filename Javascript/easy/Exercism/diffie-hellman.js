@@ -56,4 +56,8 @@ export class DiffieHellman {
         if(privateKey <= 1 || privateKey >= this.#privateKeyA) throw Error('invalid key');
         return (this.#privateKeyB ** privateKey) % this.#privateKeyA;
     }
+
+    getSecret(theirPublicKey, myPrivateKey) {
+        return (theirPublicKey ** myPrivateKey) % this.#privateKeyA;
+    }
 }
