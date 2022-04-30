@@ -1,10 +1,24 @@
 export const encode = (text, depth) => {
-  const letters = text.split('');
-  if(depth === 2){
-    // problem ... do I really wnat to use two filters?? 
-    // this solution is only good with a dept of two
-    return letters.filter((letter, i) => i % 2 === 0).join('') + letters.filter((letter, i) => i % 2 !== 0).join('');
+  let encoded = '';
+  let letters = {}
+  let key = 1;
+  let columns = text.length -1;
+
+  for (let i = 1; i <= depth; i++) {
+    letters[i] = '';
   }
+
+  for (let i = 0; i <= columns; i++) {
+    letters[key] += text[i];
+    key++
+    if(key > depth) key = 1;
+  }
+  
+  for (let i = 1; i <= Object.keys(letters).length; i++) {
+    encoded += letters[i]
+  }
+
+  return encoded;
 };
   
 export const decode = () => {
