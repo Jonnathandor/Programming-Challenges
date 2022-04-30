@@ -3,15 +3,27 @@ export const encode = (text, depth) => {
   let letters = {}
   let key = 1;
   let columns = text.length -1;
+  let goesUp = false;
 
   for (let i = 1; i <= depth; i++) {
     letters[i] = '';
   }
 
   for (let i = 0; i <= columns; i++) {
+
+    if(key < 1) {
+      key += 2;
+      goesUp = !goesUp
+    }
+
     letters[key] += text[i];
-    key++
-    if(key > depth) key = 1;
+
+    goesUp? key++ : key--;
+
+    if(key > depth){
+      key -= 2;
+      goesUp = !goesUp;
+    }
   }
   
   for (let i = 1; i <= Object.keys(letters).length; i++) {
