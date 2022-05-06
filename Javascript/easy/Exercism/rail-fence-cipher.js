@@ -10,7 +10,6 @@ export const encode = (text, depth) => {
   }
 
   for (let i = 0; i <= columns; i++) {
-
     if(key < 1) {
       key += 2;
       goesUp = !goesUp
