@@ -32,6 +32,14 @@ export const encode = (text, depth) => {
   return encoded;
 };
   
-export const decode = () => {
-  throw new Error('Remove this statement and implement this function');
+export const decode = (text, depth) => {
+  let decoded = '';
+  let letters = {}
+  let key = 1;
+  let columns = text.length -1;
+  let goesUp = false;
+
+  for (let i = 1; i <= depth; i++) {
+    letters[i] = '';
+  }
 };
