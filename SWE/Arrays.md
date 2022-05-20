@@ -12,3 +12,9 @@
 
 - When it comes to appending new data the worst case scenario
   is O(n)
+
+- Arrars are useful in coding interviews for:
+
+* Storing a collection of data
+* Representing Chronological data (stock prices)
+* Storing data to refer back to later
