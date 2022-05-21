@@ -38,7 +38,14 @@ const decode = (text, depth) => {
 
   let letters = buildLetterMap({}, depth);
   letters = populateLetterMap(text.length -1, 1, false, depth, letters, text);
+  const textChunks = [];
+  let offset = 0;
+  for (let i = 1; i <= Object.keys(letters).length; i++) {
+    textChunks.push(text.slice(offset, offset + letters[i].length));
+    offset = offset + letters[i].length;
+  }
   console.log(letters);
+  console.log(textChunks);
   return letters;
 };
 
