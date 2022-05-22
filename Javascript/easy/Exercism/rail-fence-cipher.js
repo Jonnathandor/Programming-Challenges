@@ -3,13 +3,9 @@ const encode = (text, depth) => {
   let letters = buildLetterMap({}, depth)
   letters = populateLetterMap(text.length -1, 1, false, depth, letters, text);
 
-  console.log(letters);
-  
-  for (let i = 1; i <= Object.keys(letters).length; i++) {
+  for (let i = 1; i <= depth; i++) {
     encoded += letters[i]
   }
-
-  console.log(encoded);
 
   return encoded;
 };
@@ -38,15 +34,17 @@ const decode = (text, depth) => {
 
   let letters = buildLetterMap({}, depth);
   letters = populateLetterMap(text.length -1, 1, false, depth, letters, text);
-  const textChunks = [];
   let offset = 0;
-  for (let i = 1; i <= Object.keys(letters).length; i++) {
-    textChunks.push(text.slice(offset, offset + letters[i].length));
+  let decodedRows = {}
+  
+  for (let i = 1; i <= depth; i++) {
+    console.log(text.slice(offset, offset + letters[i].length));
+    decodedRows[i] = text.slice(offset, offset + letters[i].length);
     offset = offset + letters[i].length;
   }
-  console.log(letters);
-  console.log(textChunks);
-  return letters;
+  console.log(decodedRows);
+
+  return '';
 };
 
 const buildLetterMap = (letters, depth) => {
@@ -77,6 +75,34 @@ const populateLetterMap = (columns, key, goesUp, depth, letters, text) => {
   return letters;
 
 }
+
+const createDecodedMessage = (columns, key, goesUp, depth, letters) => {
+  let decoded = '';
+  for (let i = 1; i <= columns; i++) {
+
+    if(key < 1) {
+      key += 2;
+      goesUp = !goesUp
+    }
+    //console.log(letters[key][i]);
+    decoded += letters[key][i - 1? 0 : i - 1];
+
+    console.log(letters[key]);
+
+    !goesUp? key++ : key--;
+
+    if(key > depth){
+      key -= 2;
+      goesUp = !goesUp;
+    }
+  }
+  console.log(decoded);
+
+  return decoded;
+
+}
+
+createDecodedMessage('WECRLTEERDSOEEFEAOCAIVDEN'.length -1, 1, false, 3, { '1': 'WECRLTE', '2': 'ERDSOEEFEAOC', '3': 'AIVDEN' });
 
 encode('WEAREDISCOVEREDFLEEATONCE', 3);
 
