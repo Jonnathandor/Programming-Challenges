@@ -83,6 +83,7 @@ const encode = (text, depth) => {
 
 const decode = (text, depth) => {
 
+  // This advice was given by the user Promod, the code developed by me
   // So in this case we will have the encoded string, I thought like 
   // If we can convert them to Map format similar to encode, It should be easy for us to decode from there.
   
@@ -111,9 +112,10 @@ const decode = (text, depth) => {
     decodedRows[i] = text.slice(offset, offset + letters[i].length);
     offset = offset + letters[i].length;
   }
-  console.log(decodedRows);
 
-  return '';
+  console.log(buildMessageFromDecodedRows({...decodedRows}, text.length, depth));
+
+  return buildMessageFromDecodedRows(decodedRows, text.length, depth);
 };
 
 const buildLetterMap = (letters, depth) => {
@@ -172,6 +174,42 @@ const createDecodedMessage = (columns, key, goesUp, depth, letters) => {
   return decoded;
 
 }
+
+// The function below was developed by my Friend Swann Lenik:
+// This function is working like this:
+// 3 parameters:
+// decodedRows
+// length
+// depth
+// 3 variables created:
+// i - integer: used to know what index of decodedRows array to use - instantiated at 1, as we are using the first decoded row at the beginning and is always between 1 and depth.
+// isGoingDown - boolean: True if we are going from 1 to the depth, false if going from depth to 1 - instantiated at True as we are going from 1 to depth.
+// message - string: The message correctly decoded - empty at the beginning.
+// In the while loop - while length of message is NOT GREATER THAN length:
+// We take the FIRST CHARACTER of the decodedRows[i] string
+// The slice function REMOVE the first character of decodedRows[i] string
+// If we are going down, I add 1 to i. Otherwise I subtract 1.
+// If i is EQUAL TO 0 or EQUAL TO (depth + 1)
+// I reset value of i to correct value
+// I change the value of goingDown to its opposite value
+// I return the message correctly decoded.
+const buildMessageFromDecodedRows = (decodedRows, length, depth) => {
+  let i = 1;
+  let isGoingDown = true;
+  let message = '';
+
+	while (message.length < length) {
+    message += decodedRows[i][0];
+    decodedRows[i] = decodedRows[i].slice(1);
+    i += isGoingDown ? 1 : -1;
+    if (i === 0 || i > depth) {
+      i = isGoingDown ? depth - 1: 2;
+      isGoingDown = !isGoingDown;
+    }
+  }
+  
+  return message;
+};
 
 createDecodedMessage('WECRLTEERDSOEEFEAOCAIVDEN'.length -1, 1, false, 3, { '1': 'WECRLTE', '2': 'ERDSOEEFEAOC', '3': 'AIVDEN' });
 
