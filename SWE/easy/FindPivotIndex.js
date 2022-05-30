@@ -18,3 +18,24 @@
 // Output: -1
 // Explanation: 
 // No index exists that can satisfy the problem statement.
+
+// Get the left sum and right sum at every index by first getting the total sum
+// and then iterating through the array a second time while maintaining a variable for the left sum.
+// To get the right sum we would just take the total sum minus the current index and the left sum.
+
+const pivotIndex = (nums) => {
+    // empty array?
+    if(nums.length === 0) return -1;
+
+    let total = nums.reduce((a,b) => a + b);
+    let leftSum = 0;
+    let rightSum = 0;
+    
+    for(let i = 0; i < nums.length; i++){
+        rightSum = total - nums[i] - leftSum;
+        if(leftSum === rightSum) return i;
+        leftSum += nums[i];
+    }
+    
+    return -1;
+};
