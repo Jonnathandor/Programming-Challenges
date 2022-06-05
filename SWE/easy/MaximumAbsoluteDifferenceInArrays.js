@@ -38,9 +38,10 @@ const maxDistance = (arrays) => {
         // or absolute(maximum value in the current array - minVal). 
         // If any of these two values are greater than the current stored maxDiff 
         // then replace maxDiff with that value.
-        // maxDifference = Math.max(maxDifference, Math.abs())
-        
-
-        
+        maxDifference = Math.max(maxDifference, Math.abs(max - currentArray[0]), Math.abs(currentArray[currentArray.length -1] - min));
+        min = Math.min(currentArray[0], min);
+        max = Math.max(currentArray[currentArray.length -1], max); 
     }
+
+    return maxDifference;
 }
