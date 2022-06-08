@@ -17,3 +17,25 @@
 // Explanation: 
 // "hit" shows up 3 times, but it is banned so it doesn't count.
 // "ball" shows up 2 times and it's not banned. 
+const mostCommonWord = (paragraph, banned) => {
+    const wordCount = {};
+    const words = paragraph.toLowerCase().match(/\w+('\w+)?/g);
+    
+    for(const word of words){
+      !(word in wordCount)? wordCount[word] = 1 : wordCount[word] = wordCount[word] + 1;
+    }
+    
+    let mostFrequentWord = '';
+    let maxCount = 0;
+    
+    for(word in wordCount){
+        if(banned.includes(word)) continue;
+        
+        if(wordCount[word] > maxCount){
+            maxCount = wordCount[word];
+            mostFrequentWord = word;
+        }
+    }
+    
+    return mostFrequentWord;
+};
