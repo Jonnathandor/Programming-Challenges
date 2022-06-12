@@ -13,16 +13,16 @@ const twoSum = (nums, target) => {
 
     // We store the difference between the target and 
     // every value in the hashmap because 
-    // the difference between the trget and the value
+    // the difference between the trget and the current value
     // will allow us to find the other pair that adds
     // up to the target value.
     const complements = {};
 
     for (let i = 0; i < nums.length; i++) {
         if(nums[i] in complements){
-            return [nums[i], complements[i]];
+            return [complements[nums[i]], i];
         }
 
-        complements[i] = target - nums[i];
+        complements[target - nums[i]] = i;
     }
 };
