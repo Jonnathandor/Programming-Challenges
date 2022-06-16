@@ -24,3 +24,6 @@
 // in the string where words in the dictionary appear and mark them
 // secondly we will need to wrap in a bold tag all the consecutive indices that 
 // are marked
+const addBoldTag = (word, dict) => {
+    const marked = [];
+}
