@@ -1,3 +1,5 @@
+package easy.random;
+
 // Write a method called isOdd with an int parameter and call it number. The method needs to return a boolean.
 // Check that number is &gt; 0, if it is not return false.
 // If number is odd return true, otherwise  return false.

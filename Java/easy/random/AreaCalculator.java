@@ -1,3 +1,5 @@
+package easy.random;
+
 // Write a method named area with one double parameter named radius.
 
 // The method needs to return a double value that represents the area of a circle.

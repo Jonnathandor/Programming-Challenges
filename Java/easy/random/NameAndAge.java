@@ -1,3 +1,5 @@
+package easy.random;
+
 import java.util.Scanner;
 
 // Just asimple program that takes the input from 

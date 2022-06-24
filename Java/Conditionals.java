@@ -11,33 +11,32 @@ public class Conditionals {
     // to execute an specific statement based on the result of a boolean you can use the 
     // if statement. 
 
-    int val = 0; 
-    if(val == 9){
-        // some code here
-    }
+    // int val = 0; 
+    // if(val == 9){
+    //     // some code here
+    // }
 
     // you can also have multiple statements
-    if(val == 10) {
-        // conditional code
-    } else if(val == 17) {
-        // conditional code
-    } else {
-        // executes when val is different from 10 and 17
-    }
+    // if(val == 10) {
+    //     // conditional code
+    // } else if(val == 17) {
+    //     // conditional code
+    // } else {
+    //     // executes when val is different from 10 and 17
+    // }
 
     // There is one more statement that could potentially
     // help you when it comes to control flows... the switch statement. 
 
-    switch(val) {
-        case 1:
-            // conditional code
-            break;
-        case 2: case 3: case 4:
-            // conditional code
-            break;
-        default:
-            // if all cases fail
-            break;
-    }
-
+    // switch(val) {
+    //     case 1:
+    //         // conditional code
+    //         break;
+    //     case 2: case 3: case 4:
+    //         // conditional code
+    //         break;
+    //     default:
+    //         // if all cases fail
+    //         break;
+    // }
 }

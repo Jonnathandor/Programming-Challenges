@@ -1,3 +1,5 @@
+package easy.random;
+
 // Write a method called printNumberInWord.
 // The method has one parameter number which is the whole number.
 // The method needs to print "ZERO", "ONE", "TWO", ... "NINE", "OTHER" 
