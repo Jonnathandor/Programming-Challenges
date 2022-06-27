@@ -21,5 +21,25 @@ package easy.Exercism;
 // - 34 is not factored by 3, 5, or 7, so the result would be "34".
 
 public class Raindrops {
-    
+    String convert(int number) {
+        StringBuilder strBuild = new StringBuilder();
+
+        if (number % 3 == 0){
+            strBuild.append("Pling");
+        }
+
+        if (number % 5 == 0){
+            strBuild.append("Plang");
+        }
+
+        if (number % 7 == 0){
+            strBuild.append("Plong");
+        }
+
+        if(strBuild.toString().isEmpty()){
+            return String.valueOf(number);
+        }
+
+        return strBuild.toString();
+    }
 }
