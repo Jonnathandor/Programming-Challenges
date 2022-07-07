@@ -25,5 +25,9 @@
 // secondly we will need to wrap in a bold tag all the consecutive indices that 
 // are marked
 const addBoldTag = (word, dict) => {
-    const marked = [];
+    // For every element in the word we will need to initialize to false
+    const marked = new Array(word.length);
+    console.log(marked.length);
 }
+
+addBoldTag('test', {});
