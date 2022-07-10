@@ -15,8 +15,10 @@ const maxPorfit = (prices) => {
     let maxDiff = 0;
 
     for (const price of prices) {
-        minPrice = Math.min(price, minPrice);
-        maxDiff = Math.max(maxDiff, price - minPrice);
+        minPrice = Math.min(price, minPrice); // min price
+        maxDiff = Math.max(maxDiff, price - minPrice); // what is the difference 
+        // between the maxDifference (which represents the max profits) and the difference
+        // between the current stock price and the min price seen
     }
 
     return maxDiff

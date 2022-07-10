@@ -19,9 +19,11 @@
 // "ball" shows up 2 times and it's not banned. 
 const mostCommonWord = (paragraph, banned) => {
     const wordCount = {};
-    const words = paragraph.toLowerCase().match(/\w+('\w+)?/g);
+    const words = paragraph.toLowerCase().match(/\w+('\w+)?/g); // We only want words... this does the job
     
     for(const word of words){
+        // if the word is not in the hashmap then we add it and set it to one
+        // else we want to update the count
       !(word in wordCount)? wordCount[word] = 1 : wordCount[word] = wordCount[word] + 1;
     }
     
@@ -29,8 +31,14 @@ const mostCommonWord = (paragraph, banned) => {
     let maxCount = 0;
     
     for(word in wordCount){
+        // We do not care about the banned words
+        // so we simple move on to the next one
         if(banned.includes(word)) continue;
         
+        // We check the number of 
+        // occurances of the current word
+        // if it is greater than the max count seen
+        // we got to update 
         if(wordCount[word] > maxCount){
             maxCount = wordCount[word];
             mostFrequentWord = word;

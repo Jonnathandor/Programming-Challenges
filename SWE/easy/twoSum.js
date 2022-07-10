@@ -19,10 +19,14 @@ const twoSum = (nums, target) => {
     const complements = {};
 
     for (let i = 0; i < nums.length; i++) {
+        // If the current number is in the hashtable
+        // we know that the key:value pair represents the possible complement
+        // and the index where the possible completent exists.
         if(nums[i] in complements){
             return [complements[nums[i]], i];
         }
 
+        // Othwerwise we save the possible suitor position
         complements[target - nums[i]] = i;
     }
 };
