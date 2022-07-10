@@ -11,12 +11,16 @@
 
 const firstUniqueChar = (s) => {
     const letters = {};
+    //Creates the hashmap with the number of occurances 
+    // of each letter
     for(let i = 0; i < s.length; i++){
-        if(!(s[i] in letters)) letters[s[i]] = 0;
+        // adds the letter in sets the count to zer0
+        if(!(s[i] in letters)) letters[s[i]] = 0; 
         letters[s[i]] += 1;
     }
     
-    for(let i = 0; i < s.length; i++){
+    for(let i = 0; i < s.length; i++){ 
+        // If the count is equal one ... we found the first non repreatable char
         if(letters[s[i]] === 1) return i;
     }
     

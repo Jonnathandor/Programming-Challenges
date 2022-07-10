@@ -17,6 +17,7 @@
 // the two smallest numbers multiplied with the largest number. 
 // We must consider the case with the two smallest numbers in the case of negative values.
 const maximumProduct = (nums) => {
-    sortedNums = nums.sort((a,b) => a-b);
+    sortedNums = nums.sort((a,b) => a-b); // sorts from smallest to largest
+    //(first two smalles numbers(negatives) and the largest one, three largest numbers)
     return Math.max((sortedNums[0] * sortedNums[1] * sortedNums[sortedNums.length -1]), (sortedNums[sortedNums.length -1] * sortedNums[sortedNums.length -2] * sortedNums[sortedNums.length -3]));
 }
