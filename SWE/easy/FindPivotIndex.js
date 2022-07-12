@@ -22,7 +22,6 @@
 // Get the left sum and right sum at every index by first getting the total sum
 // and then iterating through the array a second time while maintaining a variable for the left sum.
 // To get the right sum we would just take the total sum minus the current index and the left sum.
-
 const pivotIndex = (nums) => {
     // empty array?
     if(nums.length === 0) return -1;
