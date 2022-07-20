@@ -57,7 +57,7 @@
 // In general, all characters from the input should also be present in the transposed output.
 // That means that if a column in the input text contains only spaces on its bottom-most row(s),
 // the corresponding output row should contain the spaces in its right-most column(s).
-export const transpose = (matrix) => {
+const transpose = (matrix) => {
   if(matrix.length === 0) return matrix;
   const longestLine = longestElement(matrix);
   const transposed = [];
@@ -77,3 +77,5 @@ export const transpose = (matrix) => {
 };
 
 const longestElement = (matrix) => Math.max(...(matrix.map(e => e.length)));
+
+transpose(['The fourth line.', 'The fifth line.']);
