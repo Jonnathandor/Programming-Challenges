@@ -1,3 +1,5 @@
+Problem: Implement an algorithm to determine if a string has all unique characters
+
 For simplicity I am assuming that all
 the characters in the unique string are from the ASCII
 table
@@ -30,3 +32,5 @@ boolean hasUniqueChars(String text){
 }
 
 ```
+
+A bit vector can be considered as an array of bits
