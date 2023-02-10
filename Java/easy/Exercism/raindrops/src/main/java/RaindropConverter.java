@@ -1,8 +1,13 @@
 class RaindropConverter {
 
-    String convert(int number) {
-        StringBuilder strBuild = new StringBuilder();
+    private static final StringBuilder strBuild = new StringBuilder();
 
+    static {
+        strBuild.setLength(0);
+    }
+
+    String convert(int number) {
+        strBuild.setLength(0);
         if (number % 3 == 0){
             strBuild.append("Pling");
         }
@@ -15,11 +20,7 @@ class RaindropConverter {
             strBuild.append("Plong");
         }
 
-        if(strBuild.toString().isEmpty()){
-            return String.valueOf(number);
-        }
-
-        return strBuild.toString();
+        return strBuild.toString().isEmpty() ? String.valueOf(number) : strBuild.toString();
     }
 
 }
