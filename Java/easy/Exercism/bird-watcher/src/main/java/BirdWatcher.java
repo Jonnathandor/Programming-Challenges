@@ -1,6 +1,5 @@
-package easy.Exercism;
 
-public class BirdWatcher {
+class BirdWatcher {
     private final int[] birdsPerDay;
 
     public BirdWatcher(int[] birdsPerDay) {
