@@ -1,5 +1,3 @@
-package easy.Exercism;
-
 public class Hamming {
     private int distance = 0;
 
