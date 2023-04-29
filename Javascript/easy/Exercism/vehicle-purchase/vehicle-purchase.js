@@ -1,3 +1,8 @@
+// @ts-check
+//
+// The line above enables type checking for this file. Various IDEs interpret
+// the @ts-check directive. It will give you helpful autocompletion when
+// implementing this exercise.
 
 const REST_OF_ADVICE = ' is clearly the better choice.'
 
@@ -8,7 +13,7 @@ const REST_OF_ADVICE = ' is clearly the better choice.'
  * @returns {boolean} whether a license is required
  */
 export function needsLicense(kind) {
-    return kind === 'car' || kind === 'truck'
+  return kind === 'car' || kind === 'truck'
 }
 
 /**
@@ -20,8 +25,16 @@ export function needsLicense(kind) {
  * @returns {string} a sentence of advice which option to choose
  */
 export function chooseVehicle(option1, option2) {
-  if(option1 < option2){ return option1 + REST_OF_ADVICE; }
+  // option1 = "valor"
+  // option2 = "valor2"
+
+  // Necesito averiguar cual opcion aparece primero en el diccionario
+  if(option1 < option2){
+    return option1 + REST_OF_ADVICE;
+  }
+
   return option2 + REST_OF_ADVICE;
+
 }
 
 /**
@@ -33,14 +46,14 @@ export function chooseVehicle(option1, option2) {
  * @returns expected resell price in the dealership
  */
 export function calculateResellPrice(originalPrice, age) {
-  let currentPrice = 0;
+  let resellPrice = 0;
   if(age < 3){
-    currentPrice = originalPrice * 0.8;
+    resellPrice = originalPrice * 0.8;
   } else if(age > 10){
-    currentPrice = originalPrice * 0.5;
+    resellPrice = originalPrice * 0.5;
   } else {
-    currentPrice = originalPrice * 0.7;
-  } 
+    resellPrice = originalPrice * 0.7;
+  }
 
-  return currentPrice;
+  return resellPrice;
 }
