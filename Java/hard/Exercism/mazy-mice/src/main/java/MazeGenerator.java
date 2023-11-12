@@ -84,41 +84,38 @@ public class MazeGenerator {
     }
 
     private char convertToBoxCharacter(char[][] maze, int i, int j) {
-        // Since we are using the '┼' character for all walls initially, we need to only convert these.
         if (maze[i][j] != '┼') {
             return maze[i][j];
         }
 
-        boolean up = i > 0 && maze[i - 1][j] == ' ';
-        boolean down = i < maze.length - 1 && maze[i + 1][j] == ' ';
-        boolean left = j > 0 && maze[i][j - 1] == ' ';
-        boolean right = j < maze[i].length - 1 && maze[i][j + 1] == ' ';
+        // Create a bitmask for the four neighbor cells
+        int mask = 0;
+        mask |= (i > 0 && maze[i - 1][j] == ' ') ? 1 : 0;          // Up
+        mask |= (i < maze.length - 1 && maze[i + 1][j] == ' ') ? 2 : 0;   // Down
+        mask |= (j > 0 && maze[i][j - 1] == ' ') ? 4 : 0;          // Left
+        mask |= (j < maze[i].length - 1 && maze[i][j + 1] == ' ') ? 8 : 0; // Right
 
-        if (up && down && left && right) {
-            return '┼'; // Intersection
-        } else if (up && down && left) {
-            return '┤'; // T-junction opening to the left
-        } else if (up && down && right) {
-            return '├'; // T-junction opening to the right
-        } else if (left && right && down) {
-            return '┬'; // T-junction opening upwards
-        } else if (left && right && up) {
-            return '┴'; // T-junction opening downwards
-        } else if (left && right) {
-            return '─'; // Horizontal corridor
-        } else if (up && down) {
-            return '│'; // Vertical corridor
-        } else if (down && right) {
-            return '┌'; // Corner turning down and right
-        } else if (down && left) {
-            return '┐'; // Corner turning down and left
-        } else if (up && right) {
-            return '└'; // Corner turning up and right
-        } else if (up && left) {
-            return '┘'; // Corner turning up and left
-        }
+        // Define a map from masks to box characters
+        char[] chars = {
+                '┼', // 0000 No neighbors
+                '│', // 0001 Up
+                '│', // 0010 Down
+                '│', // 0011 Up and Down
+                '─', // 0100 Left
+                '┘', // 0101 Left and Up
+                '┐', // 0110 Left and Down
+                '┤', // 0111 Left, Up, and Down
+                '─', // 1000 Right
+                '└', // 1001 Right and Up
+                '┌', // 1010 Right and Down
+                '├', // 1011 Right, Up, and Down
+                '─', // 1100 Left and Right
+                '┴', // 1101 Left, Right, and Up
+                '┬', // 1110 Left, Right, and Down
+                '┼', // 1111 All directions
+        };
 
-        return '┼'; // Default case, all walls intact
+        return chars[mask];
     }
 
     // Overloaded method to generate a maze with a seed
