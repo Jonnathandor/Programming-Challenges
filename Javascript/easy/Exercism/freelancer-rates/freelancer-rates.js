@@ -33,14 +33,27 @@ export function dayRate(ratePerHour) {
 }
 
 /**
- * Calculates the rate per month
+ * Calculates the total cost for a given number of days,
+ * applying a discount to each full “month” (BILLABLE_DAYS),
+ * and rounding up to the nearest dollar.
  *
  * @param {number} ratePerHour
- * @param {number} discount for example 20% written as 0.2
- * @returns {number} the rounded up monthly rate
+ * @param {number} days         – total days you need to bill
+ * @param {number} discount     – decimal form, e.g. 0.15 for 15%
+ * @returns {number} rounded up total price
  */
-export function monthRate(ratePerHour, discount) {
-  return Math.ceil(BILLABLE_DAYS * dayRate(ratePerHour) - applyDiscount(BILLABLE_DAYS * dayRate(ratePerHour), discount));
+export function priceWithMonthlyDiscount(ratePerHour, days, discount) {
+  const daily = dayRate(ratePerHour);
+  const fullMonths = Math.floor(days / BILLABLE_DAYS);
+  const leftoverDays = days % BILLABLE_DAYS;
+
+  // cost of full months, with discount applied
+  const costMonths = fullMonths * BILLABLE_DAYS * daily * (1 - discount);
+
+  // cost of any leftover days at full daily rate
+  const costLeftover = leftoverDays * daily;
+
+  return Math.ceil(costMonths + costLeftover);
 }
 
 /**
@@ -48,11 +61,10 @@ export function monthRate(ratePerHour, discount) {
  *
  * @param {number} budget the total budget
  * @param {number} ratePerHour the rate per hour
- * @param {number} discount to apply, example 20% written as 0.2
  * @returns {number} the number of days
  */
-export function daysInBudget(budget, ratePerHour, discount) {
-  return Math.floor(budget / (dayRate(ratePerHour) - applyDiscount(dayRate(ratePerHour), discount)));
+export function daysInBudget(budget, ratePerHour) {
+  return Math.floor(budget / (dayRate(ratePerHour)));
 }
 
 /**
