@@ -48,6 +48,8 @@ export const EXPECTED_MINUTES_IN_OVEN = 40;
  * @returns {number} the number of minutes remaining
  */
 export function remainingMinutesInOven(actualMinutesInOven) {
+  // if someone passes a 50 or any number greater than
+  // the constant this will look odd ... 50 -> -10 minutes? 
   return EXPECTED_MINUTES_IN_OVEN - actualMinutesInOven;
 }
 
